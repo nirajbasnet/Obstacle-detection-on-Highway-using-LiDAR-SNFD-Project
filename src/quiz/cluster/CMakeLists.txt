@@ -9,14 +9,14 @@ project(playback)
 
 find_package(PCL 1.2 REQUIRED)
 
-include_directories(${PCL_INCLUDE_DIRS} rc/quiz/ransac rc/quiz/cluster)
+include_directories(${PCL_INCLUDE_DIRS} )
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 list(REMOVE_ITEM PCL_LIBRARIES "vtkproj4")
 
 
-add_executable (environment src/environment.cpp src/render/render.cpp src/processPointClouds.cpp src/quiz/cluster/EuclideanClustering.cpp)
-target_link_libraries (environment ${PCL_LIBRARIES})
+add_executable (quizCluster cluster.cpp EuclideanClustering.cpp ../../render/render.cpp)
+target_link_libraries (quizCluster ${PCL_LIBRARIES})
 
 
 
